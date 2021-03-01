@@ -34,5 +34,7 @@ class Bot:
                 break
             except:
                 token = simpledialog.askstring("Slack APP Token", "Please provide slack app token:")
+                if token == None:
+                    continue
                 with open(self.token_path, 'w') as f:
                     f.write(token)
