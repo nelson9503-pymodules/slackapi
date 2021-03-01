@@ -13,10 +13,9 @@ class Bot:
 
     def send_message(self, channel: str = "#general", message:str = ""):
         try:
-            response = self.client.chat_postMessage(
+            self.client.chat_postMessage(
                 channel=channel,
                 text=message)
-            assert response["message"]["text"] == message
         except SlackApiError as e:
             # You will get a SlackApiError if "ok" is False
             assert e.response["ok"] is False
