@@ -1,4 +1,5 @@
 import os
+import tkinter as tk
 from tkinter import simpledialog
 from slack import WebClient
 from slack.errors import SlackApiError
@@ -33,7 +34,9 @@ class Bot:
                 self.client = WebClient(token=token)
                 break
             except:
-                token = simpledialog.askstring("Slack APP Token", "Please provide slack app token:")
+                root = tk.Tk()
+                token = simpledialog.askstring(title="Slack App Token", prompt="Please provide slack app token:")
+                root.destroy()
                 if token == None:
                     continue
                 with open(self.token_path, 'w') as f:
